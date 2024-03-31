@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 import { useCurrencyStore } from "../../store/currencyContextStore";
 import Loading from "../common/Loading";
 import { PageDefines } from "../../defines/pageDefines";
-const rateTable = () => {
+const RateTable = () => {
     const { currencyRateData, setCurrencyRateData, currPage, setCurrPage } =
         useCurrencyStore();
     const { data, isLoading, isError } = useQuery(
@@ -65,4 +65,4 @@ const rateTable = () => {
     );
 };
 
-export default rateTable;
+export default RateTable;
