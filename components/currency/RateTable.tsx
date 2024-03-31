@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import styled from "./rateTable.module.sass";
+import styled from "./RateTable.module.sass";
 import Image from "next/image";
 import { getCurrencyRequest } from "../../apis/currencyApi";
 import { useQuery } from "react-query";
