@@ -7,7 +7,7 @@ import { useCurrencyStore } from "../../store/currencyContextStore";
 import { CurrencySelectDefines } from "../../defines/currencyDefines";
 import { perCurrencyTransfer } from "../../utils/rateExchange";
 
-const conversion = () => {
+const Conversion = () => {
     const {
         setCurrPage,
         tranSelectCurrency,
@@ -123,4 +123,4 @@ const conversion = () => {
     );
 };
 
-export default conversion;
+export default Conversion;
