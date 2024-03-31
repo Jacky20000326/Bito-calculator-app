@@ -17,7 +17,7 @@ npm run dev
 ## 專案架構
 
 ![Xnip2024-03-31_23-54-23](https://github.com/Jacky20000326/Bito-calculator-app/assets/80142839/28307904-8b03-45d6-b1ae-513b2b198718)
-
+```
 ├── apis
 │   ├── HttpCommon.ts              // 建立axios實體並提供客製化配置
 │   └── currencyApi.ts             // 提供currency api接口,並建立request提供¸串接使用
@@ -47,4 +47,4 @@ npm run dev
 │   ├──currencyContextStore.ts     // currency provider 資料存儲管理
 ├
 
-
+```
