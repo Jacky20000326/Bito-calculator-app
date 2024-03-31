@@ -26,6 +26,8 @@ interface CurrencyContextType {
     setChooseCurrencySelect: React.Dispatch<
         React.SetStateAction<CurrencySelectDefines>
     >;
+    typePrice: string;
+    setTypePrice: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // Define the default value of the context
@@ -40,6 +42,8 @@ const CurrencyContextDefaultValue: CurrencyContextType = {
     setTranSelectCurrency: () => {},
     chooseCurrencySelect: CurrencySelectDefines.target,
     setChooseCurrencySelect: () => {},
+    typePrice: "1",
+    setTypePrice: () => {},
 };
 
 const currencyContext = createContext<CurrencyContextType>(
@@ -73,6 +77,8 @@ export const CurrencyContext = ({
     let [chooseCurrencySelect, setChooseCurrencySelect] =
         useState<CurrencySelectDefines>(CurrencySelectDefines.target);
 
+    let [typePrice, setTypePrice] = useState<string>("1");
+
     let value = {
         currencyRateData,
         setCurrencyRateData,
@@ -84,6 +90,8 @@ export const CurrencyContext = ({
         setTranSelectCurrency,
         chooseCurrencySelect,
         setChooseCurrencySelect,
+        typePrice,
+        setTypePrice,
     };
 
     return (

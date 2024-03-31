@@ -2,15 +2,14 @@
 //     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 // }
 
-export const thousandsSeparatorTool = (num: number): string =>{
+export const thousandsSeparatorTool = (num: number,transferDecimal:number): string =>{
+    let decimalLimit = transferDecimal ++
+    let calThousandsSeparator = num.toLocaleString(undefined,{ maximumFractionDigits: decimalLimit })
+    let tranArr = calThousandsSeparator.split(".")[1] || ""
     
-    let result = String(num).replace(
-        /^\d+/,
-        number => [...number].map(
-            (digit, index, digits) => (
-                !index || (digits.length - index) % 3 ? '' : ','
-            ) + digit 
-        ).join(''))
-
-    return result
+    if(tranArr && tranArr.length > transferDecimal){
+        return calThousandsSeparator.slice(0, -1);
+    }else{
+        return calThousandsSeparator
+    }
 }
