@@ -2,8 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## 專案連接
 
-[LINK](https://bito-calculator-app-k8rk.vercel.app/)
+### [連接](https://bito-calculator-app-k8rk.vercel.app/)
+
 ## 專案截圖
+
+![Xnip2024-03-31_23-56-21](https://github.com/Jacky20000326/Bito-calculator-app/assets/80142839/f2b5800a-f355-4d28-9f3c-3f4febeda3bc)
 
 ## 本地執行
 
@@ -14,9 +17,14 @@ npm run dev
 
 ```
 
+## 環境建置
+
+1. 使用React 18 + Nextjs 14 + typescript 為前端環環境建置
+2. 使用React-query 及搭配axios 進行api串接處理
+3. 使用context api 作為資料管理工具
+
 ## 專案架構
 
-![Xnip2024-03-31_23-54-23](https://github.com/Jacky20000326/Bito-calculator-app/assets/80142839/28307904-8b03-45d6-b1ae-513b2b198718)
 ```
 ├── apis
 │   ├── HttpCommon.ts              // 建立axios實體並提供客製化配置
