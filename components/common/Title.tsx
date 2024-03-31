@@ -4,7 +4,7 @@ import styled from "./Title.module.sass";
 import { AiOutlineClose } from "react-icons/ai";
 import { PageDefines } from "../../defines/pageDefines";
 import { useCurrencyStore } from "../../store/currencyContextStore";
-const title = () => {
+const Title = () => {
     const { currPage, setCurrPage } = useCurrencyStore();
     const ClosePageHandler = () => {
         if (currPage == PageDefines.rateConversion) {
@@ -28,4 +28,4 @@ const title = () => {
     );
 };
 
-export default title;
+export default Title;
