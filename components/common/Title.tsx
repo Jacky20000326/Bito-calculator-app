@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styled from "./title.module.sass";
+import styled from "./Title.module.sass";
 import { AiOutlineClose } from "react-icons/ai";
 import { PageDefines } from "../../defines/pageDefines";
 import { useCurrencyStore } from "../../store/currencyContextStore";
