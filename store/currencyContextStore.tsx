@@ -1,6 +1,6 @@
 "use client";
 import React, { createContext, useContext, useState } from "react";
-import { PageDefines } from "../defines/pageDefines";
+// import { PageDefines } from "../defines/pageDefines";
 import {
     CurrencySelectDefines,
     targetSelectCurrencyDefaultValue,
@@ -12,8 +12,8 @@ interface CurrencyContextType {
     setCurrencyRateData: React.Dispatch<
         React.SetStateAction<currency.apiType[]>
     >;
-    currPage: PageDefines;
-    setCurrPage: React.Dispatch<React.SetStateAction<PageDefines>>;
+    // currPage: PageDefines;
+    // setCurrPage: React.Dispatch<React.SetStateAction<PageDefines>>;
     targetSelectCurrency: currency.apiType | null;
     setTargetSelectCurrency: React.Dispatch<
         React.SetStateAction<currency.apiType | null>
@@ -34,8 +34,8 @@ interface CurrencyContextType {
 const CurrencyContextDefaultValue: CurrencyContextType = {
     currencyRateData: [],
     setCurrencyRateData: () => {},
-    currPage: PageDefines.rateTable,
-    setCurrPage: () => {},
+    // currPage: PageDefines.rateTable,
+    // setCurrPage: () => {},
     targetSelectCurrency: targetSelectCurrencyDefaultValue,
     setTargetSelectCurrency: () => {},
     tranSelectCurrency: tranSelectCurrencyDefaultValue,
@@ -62,7 +62,7 @@ export const CurrencyContext = ({
     );
 
     // current page detect
-    let [currPage, setCurrPage] = useState<PageDefines>(PageDefines.rateTable);
+    // let [currPage, setCurrPage] = useState<PageDefines>(PageDefines.rateTable);
 
     // target currency select
     let [targetSelectCurrency, setTargetSelectCurrency] =
@@ -82,8 +82,8 @@ export const CurrencyContext = ({
     let value = {
         currencyRateData,
         setCurrencyRateData,
-        currPage,
-        setCurrPage,
+        // currPage,
+        // setCurrPage,
         targetSelectCurrency,
         setTargetSelectCurrency,
         tranSelectCurrency,

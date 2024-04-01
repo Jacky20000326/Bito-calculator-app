@@ -9,6 +9,12 @@ export const ApiClient = createHttpRequestInstance(host)
 
 // get currency api request
 
+// ssr
+
+export const gerServerSideProps = ()=>{
+    
+}
+
 
 export const getCurrencyRequest = async ():AxiosPromise<currency.apiType[]>=>{
 

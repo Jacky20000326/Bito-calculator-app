@@ -2,14 +2,16 @@
 import React, { useCallback, useMemo, useState } from "react";
 import styled from "./Conversion.module.sass";
 import { AiFillCaretDown, AiOutlineDoubleLeft } from "react-icons/ai";
-import { PageDefines } from "../../defines/pageDefines";
+import { PageRouteDefines } from "../../defines/pageDefines";
 import { useCurrencyStore } from "../../store/currencyContextStore";
 import { CurrencySelectDefines } from "../../defines/currencyDefines";
 import { perCurrencyTransfer } from "../../utils/rateExchange";
+import { useRouter } from 'next/navigation'
+
 
 const Conversion = () => {
+    const router = useRouter()
     const {
-        setCurrPage,
         tranSelectCurrency,
         targetSelectCurrency,
         setChooseCurrencySelect,
@@ -17,13 +19,15 @@ const Conversion = () => {
         setTypePrice,
     } = useCurrencyStore();
 
+    
+
     // get the current currency transfer result
     const currTransferCurrency = useCallback(() => {
         let transInputTypeToNumber = Number(typePrice);
         // check transInputTypeToNumber is not NAN
 
         if (isNaN(transInputTypeToNumber)) {
-            return "NAN";
+            return "Please enter a number.";
         } else {
             if (
                 tranSelectCurrency?.twd_price !== undefined &&
@@ -43,13 +47,16 @@ const Conversion = () => {
     // set the target currency select
     const setTargetSelectHandler = () => {
         setChooseCurrencySelect(CurrencySelectDefines.target);
-        setCurrPage(PageDefines.currencySelect);
+        // setCurrPage(PageRouteDefines.currencySelect);
+        router.push(PageRouteDefines.currencySelect)
+        
     };
 
     // set the transfer currency select
     const setTransferSelectHandler = () => {
         setChooseCurrencySelect(CurrencySelectDefines.transfer);
-        setCurrPage(PageDefines.currencySelect);
+        router.push(PageRouteDefines.currencySelect)
+        // setCurrPage(PageRouteDefines.currencySelect);
     };
 
     // get
