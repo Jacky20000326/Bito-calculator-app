@@ -1,25 +1,25 @@
 "use client";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import styled from "./Conversion.module.sass";
 import { AiFillCaretDown, AiOutlineDoubleLeft } from "react-icons/ai";
-import { PageRouteDefines } from "../../defines/pageDefines";
+import { PageRouteDefines } from "../../Defines/pageDefines";
 import { useCurrencyStore } from "../../store/currencyContextStore";
-import { CurrencySelectDefines } from "../../defines/currencyDefines";
+import { CurrencySelectDefines } from "../../Defines/currencyDefines";
 import { perCurrencyTransfer } from "../../utils/rateExchange";
-import { useRouter } from 'next/navigation'
-
+import { useRouter } from "next/navigation";
+import { fetchCurrencyData } from "@/apis/currencyApi";
 
 const Conversion = () => {
-    const router = useRouter()
+    const router = useRouter();
     const {
         tranSelectCurrency,
         targetSelectCurrency,
         setChooseCurrencySelect,
+        setCurrencyRateData,
+        currencyRateData,
         typePrice,
         setTypePrice,
     } = useCurrencyStore();
-
-    
 
     // get the current currency transfer result
     const currTransferCurrency = useCallback(() => {
@@ -48,14 +48,13 @@ const Conversion = () => {
     const setTargetSelectHandler = () => {
         setChooseCurrencySelect(CurrencySelectDefines.target);
         // setCurrPage(PageRouteDefines.currencySelect);
-        router.push(PageRouteDefines.currencySelect)
-        
+        router.push(PageRouteDefines.currencySelect);
     };
 
     // set the transfer currency select
     const setTransferSelectHandler = () => {
         setChooseCurrencySelect(CurrencySelectDefines.transfer);
-        router.push(PageRouteDefines.currencySelect)
+        router.push(PageRouteDefines.currencySelect);
         // setCurrPage(PageRouteDefines.currencySelect);
     };
 
@@ -74,6 +73,19 @@ const Conversion = () => {
             );
         }
     };
+
+    const getCurrencyData = async () => {
+        let dataResult = await fetchCurrencyData();
+        setCurrencyRateData(dataResult);
+    };
+
+    // const { data } = useQuery(["currency"], getCurrencyRequest);
+
+    useEffect(() => {
+        if (currencyRateData.length == 0) {
+            getCurrencyData();
+        }
+    }, []);
 
     return (
         <div className={styled.conversionPage}>

@@ -1,11 +1,12 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
-// import { PageDefines } from "../defines/pageDefines";
 import {
     CurrencySelectDefines,
     targetSelectCurrencyDefaultValue,
     tranSelectCurrencyDefaultValue,
-} from "../defines/currencyDefines";
+} from "@/Defines/currencyDefines";
+import React, { createContext, useContext, useState } from "react";
+// import { PageDefines } from "../defines/pageDefines";
+
 // Define the type of the context
 interface CurrencyContextType {
     currencyRateData: currency.apiType[];

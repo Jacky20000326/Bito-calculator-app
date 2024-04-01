@@ -2,68 +2,57 @@
 import React, { useEffect } from "react";
 import styled from "./RateTable.module.sass";
 import Image from "next/image";
-import { getCurrencyRequest } from "../apis/currencyApi";
+import { fetchCurrencyData } from "../apis/currencyApi";
 import { useQuery } from "react-query";
 import { useCurrencyStore } from "../store/currencyContextStore";
-import Loading from "../components/common/Loading";
-import { usePathname,useRouter } from "next/navigation";
-import { PageRouteDefines } from "../defines/pageDefines";
+
+import { usePathname, useRouter } from "next/navigation";
+import { PageRouteDefines } from "../Defines/pageDefines";
+import CurrencyItem from "@/components/currency/CurrencyItem";
+import { DehydratedState } from "@tanstack/react-query";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 const Home = () => {
-    const { currencyRateData, setCurrencyRateData} =
-        useCurrencyStore();
-    const Route = useRouter()
-    const { data, isLoading } = useQuery(
-        "currency",
-        getCurrencyRequest
-    );
+    const { currencyRateData, setCurrencyRateData } = useCurrencyStore();
+    const Route = useRouter();
+    // const { data, isLoading } = useQuery("currency", getCurrencyRequest);
 
     const movePageHandler = () => {
-        Route.push(PageRouteDefines.rateConversion)
+        Route.push(PageRouteDefines.rateConversion);
     };
 
+    const getCurrencyData = async () => {
+        let dataResult = await fetchCurrencyData();
+        setCurrencyRateData(dataResult);
+    };
+
+    // const { data } = useQuery(["currency"], getCurrencyRequest);
+
     useEffect(() => {
-        if (data && !isLoading) {
-            let queryRespond = data.data as currency.apiType[];
-            setCurrencyRateData(queryRespond);
+        if (currencyRateData.length == 0) {
+            getCurrencyData();
         }
-    }, [data]);
+    }, []);
     return (
         <div className={styled.rateTableContainer}>
             <div className={styled.rateTableTitle}>
                 <div className={styled.currencyTitle}>Currency</div>
                 <div className={styled.priceTitle}>price</div>
             </div>
-            {isLoading ? (
-                <Loading />
-            ) : (
-                <>
-                    <div className={styled.rateColumnContainer}>
-                        {currencyRateData.map((item) => (
-                            <div className={styled.rateColumn} key={item.id}>
-                                <div className={styled.currencyInfoCube}>
-                                    <div className={styled.currencyIcon}>
-                                        <img src={item.currency_icon} alt="" />
-                                    </div>
-                                    <div className={styled.currencyName}>
-                                        {item.currency} / TWD
-                                    </div>
-                                </div>
 
-                                <div className={styled.currencyPrize}>
-                                    {item.twd_price}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div
-                        className={styled.rateConversionBtn}
-                        onClick={movePageHandler}
-                    >
-                        Rate ConversionBtn
-                    </div>
-                </>
-            )}
+            <>
+                <div className={styled.rateColumnContainer}>
+                    {currencyRateData.map((item) => (
+                        <CurrencyItem item={item} />
+                    ))}
+                </div>
+                <div
+                    className={styled.rateConversionBtn}
+                    onClick={movePageHandler}
+                >
+                    Rate ConversionBtn
+                </div>
+            </>
         </div>
     );
 };

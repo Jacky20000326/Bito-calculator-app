@@ -5,6 +5,7 @@ import "../styles/global.sass";
 import { CurrencyContext } from "../store/currencyContextStore";
 import { QueryProvider } from "../libs/QueryProvider";
 import Title from "../components/common/Title";
+import { DehydratedState } from "react-query";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -14,16 +15,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
+    dehydratedState,
 }: Readonly<{
     children: React.ReactNode;
+    dehydratedState: DehydratedState;
 }>) {
     // const queryClient = new QueryClient(); // create queryClient instance
     return (
         <html lang="en">
             <body className={inter.className}>
-                <QueryProvider>
+                <QueryProvider dehydratedState={dehydratedState}>
                     <Title />
-                        <CurrencyContext>{children}</CurrencyContext>
+                    <CurrencyContext>{children}</CurrencyContext>
                 </QueryProvider>
             </body>
         </html>

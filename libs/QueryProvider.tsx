@@ -1,20 +1,26 @@
 "use client";
+import Post from "@/components/Post";
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { DehydratedState, QueryClient, QueryClientProvider } from "react-query";
 
-import { ReactQueryDevtools } from "react-query/devtools";
-export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
+export const QueryProvider = ({
+    children,
+    dehydratedState,
+}: {
+    children: React.ReactNode;
+    dehydratedState: DehydratedState;
+}) => {
     const queryClient = new QueryClient({
         defaultOptions: {
             queries: {
-              staleTime: 60 * 1000,
+                staleTime: 60 * 1000,
             },
         },
     });
+
     return (
         <QueryClientProvider client={queryClient}>
             {children}
-            {/* <ReactQueryDevtools /> */}
         </QueryClientProvider>
     );
 };
