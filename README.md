@@ -4,7 +4,7 @@
 
 ## 專案截圖
 
-![Xnip2024-03-31_23-56-21](https://github.com/Jacky20000326/Bito-calculator-app/assets/80142839/f2b5800a-f355-4d28-9f3c-3f4febeda3bc)
+![Xnip2024-03-31_23-56-21](https://bito-calculator-app-k8rk.vercel.app/conversion)
 
 ## 本地執行
 
