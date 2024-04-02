@@ -2,13 +2,13 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import styled from "./Conversion.module.sass";
 import { AiFillCaretDown, AiOutlineDoubleLeft } from "react-icons/ai";
-import { PageRouteDefines } from "../../defines/pageDefines";
+import { PageRouteDefines } from "../../Defines/pageDefines";
 import { useCurrencyStore } from "../../store/currencyContextStore";
-import { CurrencySelectDefines } from "../../defines/currencyDefines";
+import { CurrencySelectDefines } from "../../Defines/currencyDefines";
 import { perCurrencyTransfer } from "../../utils/rateExchange";
 import { useRouter } from "next/navigation";
 import { fetchCurrencyData } from "@/apis/currencyApi";
-import Image from 'next/image'
+import Image from "next/image";
 const Conversion = () => {
     const router = useRouter();
     const {
@@ -25,9 +25,9 @@ const Conversion = () => {
     const currTransferCurrency = useCallback(() => {
         let transInputTypeToNumber = Number(typePrice);
         // check transInputTypeToNumber is not NAN
-     
+
         if (isNaN(transInputTypeToNumber)) {
-            return "Please enter a number.";
+            return "";
         } else {
             if (
                 tranSelectCurrency?.twd_price !== undefined &&
@@ -42,7 +42,7 @@ const Conversion = () => {
                 );
             }
         }
-    }, [tranSelectCurrency,targetSelectCurrency,typePrice]);
+    }, [tranSelectCurrency, targetSelectCurrency, typePrice]);
 
     // set the target currency select
     const setTargetSelectHandler = () => {
@@ -55,10 +55,8 @@ const Conversion = () => {
     const setTransferSelectHandler = () => {
         setChooseCurrencySelect(CurrencySelectDefines.transfer);
         router.push(PageRouteDefines.currencySelect);
-        // setCurrPage(PageRouteDefines.currencySelect);
     };
 
-    // get
     const perCetCurrencyTransfer = () => {
         if (
             tranSelectCurrency?.twd_price !== undefined &&
@@ -74,12 +72,16 @@ const Conversion = () => {
         }
     };
 
+    const inputHandler = (inputValue: string) => {
+        let tranNumber = Number(inputValue);
+        if (isNaN(tranNumber) || inputValue.includes(" ")) return;
+        setTypePrice(inputValue);
+    };
+
     const getCurrencyData = async () => {
         let dataResult = await fetchCurrencyData();
         setCurrencyRateData(dataResult);
     };
-
-    // const { data } = useQuery(["currency"], getCurrencyRequest);
 
     useEffect(() => {
         if (currencyRateData.length == 0) {
@@ -109,7 +111,7 @@ const Conversion = () => {
                     </button>
                     <input
                         value={typePrice}
-                        onChange={(e) => setTypePrice(e.target.value)}
+                        onChange={(e) => inputHandler(e.target.value)}
                         className={styled.targetCurrencyMonetInput}
                     />
                 </div>

@@ -1,20 +1,3 @@
-// import { AxiosPromise } from 'axios';
-// import { createHttpRequestInstance } from './HttpCommon'
-
-// 
-// const endPoint:string = "/api/v1/pairs";
-
-
-// export const ApiClient = createHttpRequestInstance(host)
-
-
-
-// export const getCurrencyRequest = async ():AxiosPromise<currency.apiType[]>=>{
-
-//     return (await ApiClient.get(endPoint)).data;
-
-// }
-
 
 
 export const fetchCurrencyData = async ():Promise<currency.apiType[]> => {
@@ -25,7 +8,6 @@ export const fetchCurrencyData = async ():Promise<currency.apiType[]> => {
         host
     );
     if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
         throw new Error("Failed to fetch data");
     }
 
