@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import styled from "./Title.module.sass";
 import { AiOutlineClose } from "react-icons/ai";
 import { PageNameDefines, PageRouteDefines } from "../../Defines/pageDefines";
-import { useCurrencyStore } from "../../store/currencyContextStore";
 import { usePathname, useRouter } from "next/navigation";
 
 const Title = () => {
