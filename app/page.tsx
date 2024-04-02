@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "./RateTable.module.sass";
 import { useRouter } from "next/navigation";
 import { PageRouteDefines } from "../Defines/pageDefines";
