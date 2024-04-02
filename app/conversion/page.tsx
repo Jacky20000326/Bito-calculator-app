@@ -4,7 +4,7 @@ import styled from "./Conversion.module.sass";
 import { AiFillCaretDown, AiOutlineDoubleLeft } from "react-icons/ai";
 import { PageRouteDefines } from "../../defines/pageDefines";
 import { useCurrencyStore } from "../../store/currencyContextStore";
-import { CurrencySelectDefines } from "../../Defines/currencyDefines";
+import { CurrencySelectDefines } from "../../defines/currencyDefines";
 import { perCurrencyTransfer } from "../../utils/rateExchange";
 import { useRouter } from "next/navigation";
 import { fetchCurrencyData } from "@/apis/currencyApi";
