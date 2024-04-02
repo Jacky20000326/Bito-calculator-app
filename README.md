@@ -56,4 +56,7 @@ npm run dev
 
 ```
 
+## 技術點
 
+1. 使用context api 進行資料管理避免產生prop drilling問題提升了官案的可讀性。
+2. 使用Server-Side-Render 方式來獲取資料頁面,並搭配prefetchQuery及hydrate渲染至client。
