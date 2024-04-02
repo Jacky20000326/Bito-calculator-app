@@ -1,8 +1,9 @@
+"use client"
 import React,{useState} from "react";
 import styled from "./CurrencyItem.module.sass";
 import { fetchCurrencyData } from "@/apis/currencyApi";
 import { useQuery } from "@tanstack/react-query";
-
+import Image from 'next/image'
 const CurrencyItem = () => {
     const { data } = useQuery({ queryKey: ['currency'], queryFn: fetchCurrencyData })
     
@@ -15,7 +16,10 @@ const CurrencyItem = () => {
                 <div className={styled.rateColumn} key={item.id}>
                     <div className={styled.currencyInfoCube}>
                         <div className={styled.currencyIcon}>
-                            <img src={item.currency_icon} alt="" />
+                            <Image src={item.currency_icon}
+                                width={500}
+                                height={500}
+                                alt={item.currency}/>
                         </div>
                         <div className={styled.currencyName}>{item.currency} / TWD</div>
                     </div>

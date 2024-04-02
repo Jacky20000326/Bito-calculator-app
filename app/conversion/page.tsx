@@ -8,7 +8,7 @@ import { CurrencySelectDefines } from "../../defines/currencyDefines";
 import { perCurrencyTransfer } from "../../utils/rateExchange";
 import { useRouter } from "next/navigation";
 import { fetchCurrencyData } from "@/apis/currencyApi";
-
+import Image from 'next/image'
 const Conversion = () => {
     const router = useRouter();
     const {
@@ -95,10 +95,12 @@ const Conversion = () => {
                         className={styled.targetCurrencySelect}
                         onClick={setTargetSelectHandler}
                     >
-                        <img
+                        <Image
                             className={styled.currencyIcon}
-                            src={targetSelectCurrency?.currency_icon}
-                            alt=""
+                            src={targetSelectCurrency?.currency_icon as string}
+                            alt="currency icon"
+                            width={10}
+                            height={30}
                         />
                         <div className={styled.currencyName}>
                             {targetSelectCurrency?.currency}/ TWD
@@ -116,10 +118,12 @@ const Conversion = () => {
                         className={styled.tranCurrencySelect}
                         onClick={setTransferSelectHandler}
                     >
-                        <img
+                        <Image
                             className={styled.currencyIcon}
-                            src={tranSelectCurrency?.currency_icon}
-                            alt=""
+                            src={tranSelectCurrency?.currency_icon as string}
+                            alt="currency icon"
+                            width={10}
+                            height={30}
                         />
                         <div className={styled.currencyName}>
                             {tranSelectCurrency?.currency} / TWD

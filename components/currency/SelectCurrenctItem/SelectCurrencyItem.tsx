@@ -42,10 +42,12 @@ const SelectCurrencyItem = () => {
                     }}
                     className={styled.optionCurrency}
                 >
-                    <img
+                    <Image
                         className={styled.currencyIcon}
                         src={item.currency_icon}
                         alt={item.currency}
+                        width={60}
+                        height={60}
                     />
                     <div className={styled.currencyName}>{item.currency}</div>
                 </div>
