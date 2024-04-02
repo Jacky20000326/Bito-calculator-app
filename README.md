@@ -1,10 +1,11 @@
 ## 專案連接
 
-### [連接](https://bito-calculator-app-k8rk-git-dev-jacky20000326s-projects.vercel.app/)
+### [連接](https://bito-calculator-app-k8rk.vercel.app/conversion)
 
 ## 專案截圖
 
-![Xnip2024-03-31_23-56-21](https://bito-calculator-app-k8rk.vercel.app/conversion)
+![Xnip2024-03-31_23-56-21](https://github.com/Jacky20000326/Bito-calculator-app/assets/80142839/aa007ea5-9048-4f1b-ad2e-932edaa9e04d)
+
 
 ## 本地執行
 
