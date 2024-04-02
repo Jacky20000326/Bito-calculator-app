@@ -19,13 +19,12 @@ const Home = () => {
     };
     
         return (
-                <div className={styled.rateTableContainer}>
+            <div className={styled.rateTableContainer}>
                 <div className={styled.rateTableTitle}>
                     <div className={styled.currencyTitle}>Currency</div>
                     <div className={styled.priceTitle}>price</div>
                 </div>
     
-                <>
                     <div className={styled.rateColumnContainer}>
                     <HydratedPosts>
                         <CurrencyItem />
@@ -37,7 +36,6 @@ const Home = () => {
                     >
                         Rate ConversionBtn
                     </div>
-                </>
             </div>
         );
     }
