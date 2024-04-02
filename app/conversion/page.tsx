@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import styled from "./Conversion.module.sass";
 import { AiFillCaretDown, AiOutlineDoubleLeft } from "react-icons/ai";
-import { PageRouteDefines } from "../../Defines/pageDefines";
+import { PageRouteDefines } from "../../defines/pageDefines";
 import { useCurrencyStore } from "../../store/currencyContextStore";
 import { CurrencySelectDefines } from "../../Defines/currencyDefines";
 import { perCurrencyTransfer } from "../../utils/rateExchange";

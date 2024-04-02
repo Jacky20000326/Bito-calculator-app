@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "./RateTable.module.sass";
 import { useRouter } from "next/navigation";
-import { PageRouteDefines } from "../Defines/pageDefines";
+import { PageRouteDefines } from "../defines/pageDefines";
 import CurrencyItem from "@/components/currency/CurrencyItem/CurrencyItem";
 import HydratedPosts from "@/libs/react-query-lib/HydrateProvider";
 const Home = () => {
