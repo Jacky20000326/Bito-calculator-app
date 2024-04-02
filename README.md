@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## 專案連接
 
 ### [連接](https://bito-calculator-app-k8rk-git-dev-jacky20000326s-projects.vercel.app/)
