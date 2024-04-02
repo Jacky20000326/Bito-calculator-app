@@ -1,18 +1,22 @@
 "use client";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import styled from "./Conversion.module.sass";
 import { AiFillCaretDown, AiOutlineDoubleLeft } from "react-icons/ai";
-import { PageDefines } from "../../defines/pageDefines";
+import { PageRouteDefines } from "../../defines/pageDefines";
 import { useCurrencyStore } from "../../store/currencyContextStore";
 import { CurrencySelectDefines } from "../../defines/currencyDefines";
 import { perCurrencyTransfer } from "../../utils/rateExchange";
-
+import { useRouter } from "next/navigation";
+import { fetchCurrencyData } from "@/apis/currencyApi";
+import Image from 'next/image'
 const Conversion = () => {
+    const router = useRouter();
     const {
-        setCurrPage,
         tranSelectCurrency,
         targetSelectCurrency,
         setChooseCurrencySelect,
+        setCurrencyRateData,
+        currencyRateData,
         typePrice,
         setTypePrice,
     } = useCurrencyStore();
@@ -23,7 +27,7 @@ const Conversion = () => {
         // check transInputTypeToNumber is not NAN
 
         if (isNaN(transInputTypeToNumber)) {
-            return "NAN";
+            return "Please enter a number.";
         } else {
             if (
                 tranSelectCurrency?.twd_price !== undefined &&
@@ -43,13 +47,15 @@ const Conversion = () => {
     // set the target currency select
     const setTargetSelectHandler = () => {
         setChooseCurrencySelect(CurrencySelectDefines.target);
-        setCurrPage(PageDefines.currencySelect);
+        // setCurrPage(PageRouteDefines.currencySelect);
+        router.push(PageRouteDefines.currencySelect);
     };
 
     // set the transfer currency select
     const setTransferSelectHandler = () => {
         setChooseCurrencySelect(CurrencySelectDefines.transfer);
-        setCurrPage(PageDefines.currencySelect);
+        router.push(PageRouteDefines.currencySelect);
+        // setCurrPage(PageRouteDefines.currencySelect);
     };
 
     // get
@@ -68,6 +74,19 @@ const Conversion = () => {
         }
     };
 
+    const getCurrencyData = async () => {
+        let dataResult = await fetchCurrencyData();
+        setCurrencyRateData(dataResult);
+    };
+
+    // const { data } = useQuery(["currency"], getCurrencyRequest);
+
+    useEffect(() => {
+        if (currencyRateData.length == 0) {
+            getCurrencyData();
+        }
+    }, []);
+
     return (
         <div className={styled.conversionPage}>
             <div className={styled.conversionContainer}>
@@ -76,10 +95,12 @@ const Conversion = () => {
                         className={styled.targetCurrencySelect}
                         onClick={setTargetSelectHandler}
                     >
-                        <img
+                        <Image
                             className={styled.currencyIcon}
-                            src={targetSelectCurrency?.currency_icon}
-                            alt=""
+                            src={targetSelectCurrency?.currency_icon as string}
+                            alt="currency icon"
+                            width={10}
+                            height={30}
                         />
                         <div className={styled.currencyName}>
                             {targetSelectCurrency?.currency}/ TWD
@@ -97,10 +118,12 @@ const Conversion = () => {
                         className={styled.tranCurrencySelect}
                         onClick={setTransferSelectHandler}
                     >
-                        <img
+                        <Image
                             className={styled.currencyIcon}
-                            src={tranSelectCurrency?.currency_icon}
-                            alt=""
+                            src={tranSelectCurrency?.currency_icon as string}
+                            alt="currency icon"
+                            width={10}
+                            height={30}
                         />
                         <div className={styled.currencyName}>
                             {tranSelectCurrency?.currency} / TWD

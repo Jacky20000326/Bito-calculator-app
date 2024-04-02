@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 import "../styles/global.sass";
 
 import { CurrencyContext } from "../store/currencyContextStore";
-import { QueryProvider } from "../libs/QueryProvider";
+import { QueryProvider } from "../libs/react-query-lib/QueryProvider";
+import Title from "../components/common/Title";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,11 +18,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     // const queryClient = new QueryClient(); // create queryClient instance
-
     return (
         <html lang="en">
             <body className={inter.className}>
                 <QueryProvider>
+                    <Title />
                     <CurrencyContext>{children}</CurrencyContext>
                 </QueryProvider>
             </body>
