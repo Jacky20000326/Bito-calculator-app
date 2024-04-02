@@ -25,7 +25,7 @@ const Conversion = () => {
     const currTransferCurrency = useCallback(() => {
         let transInputTypeToNumber = Number(typePrice);
         // check transInputTypeToNumber is not NAN
-
+     
         if (isNaN(transInputTypeToNumber)) {
             return "Please enter a number.";
         } else {
@@ -42,7 +42,7 @@ const Conversion = () => {
                 );
             }
         }
-    }, [typePrice]);
+    }, [tranSelectCurrency,targetSelectCurrency,typePrice]);
 
     // set the target currency select
     const setTargetSelectHandler = () => {
