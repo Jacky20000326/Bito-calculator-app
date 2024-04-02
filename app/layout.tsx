@@ -3,9 +3,8 @@ import { Inter } from "next/font/google";
 import "../styles/global.sass";
 
 import { CurrencyContext } from "../store/currencyContextStore";
-import { QueryProvider } from "../libs/QueryProvider";
+import { QueryProvider } from "../libs/react-query-lib/QueryProvider";
 import Title from "../components/common/Title";
-import { DehydratedState } from "react-query";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -15,16 +14,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-    dehydratedState,
 }: Readonly<{
     children: React.ReactNode;
-    dehydratedState: DehydratedState;
 }>) {
     // const queryClient = new QueryClient(); // create queryClient instance
     return (
         <html lang="en">
             <body className={inter.className}>
-                <QueryProvider dehydratedState={dehydratedState}>
+                <QueryProvider>
                     <Title />
                     <CurrencyContext>{children}</CurrencyContext>
                 </QueryProvider>

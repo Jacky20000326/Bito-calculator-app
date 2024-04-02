@@ -2,58 +2,29 @@
 import { useCurrencyStore } from "../../store/currencyContextStore";
 import React, { useEffect, useState } from "react";
 import styled from "./SelectCurrencyCategory.module.sass";
-import { CurrencySelectDefines } from "../../Defines/currencyDefines";
+import { CurrencySelectDefines } from "../../defines/currencyDefines";
 import { useRouter } from "next/navigation";
-import { PageRouteDefines } from "../../Defines/pageDefines";
+import { PageRouteDefines } from "../../defines/pageDefines";
+import SelectCurrencyItem from "@/components/currency/SelectCurrenctItem/SelectCurrencyItem";
+import HydratedPosts from "@/libs/react-query-lib/HydrateProvider";
 const SelectCurrencyCategory = () => {
     const router = useRouter();
     const {
         currencyRateData,
-        targetSelectCurrency,
-        setTargetSelectCurrency,
-        tranSelectCurrency,
-        setTranSelectCurrency,
-        chooseCurrencySelect,
     } = useCurrencyStore();
 
-    const setSelectCurrencyHandler = (currencyInfo: currency.apiType) => {
-        if (chooseCurrencySelect == CurrencySelectDefines.target) {
-            setTargetSelectCurrency((data) => (data = currencyInfo));
-        }
-
-        if (chooseCurrencySelect == CurrencySelectDefines.transfer) {
-            setTranSelectCurrency((data) => (data = currencyInfo));
-        }
-
-        router.push(PageRouteDefines.rateConversion);
-    };
 
     useEffect(() => {
-        console.log();
         if (currencyRateData.length == 0) {
             router.replace(PageRouteDefines.rateConversion);
-            console.log("a");
         }
     }, []);
 
     return (
         <div className={styled.selectCurrencyCategoryContainer}>
-            {currencyRateData.map((data) => (
-                <div
-                    key={data.id}
-                    onClick={() => {
-                        setSelectCurrencyHandler(data);
-                    }}
-                    className={styled.optionCurrency}
-                >
-                    <img
-                        className={styled.currencyIcon}
-                        src={data.currency_icon}
-                        alt=""
-                    />
-                    <div className={styled.currencyName}>{data.currency}</div>
-                </div>
-            ))}
+            <HydratedPosts>
+                <SelectCurrencyItem/>
+            </HydratedPosts>
         </div>
     );
 };

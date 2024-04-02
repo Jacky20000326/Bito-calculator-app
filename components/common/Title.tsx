@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "./Title.module.sass";
 import { AiOutlineClose } from "react-icons/ai";
-import { PageNameDefines, PageRouteDefines } from "../../Defines/pageDefines";
-import { useCurrencyStore } from "../../store/currencyContextStore";
+import { PageNameDefines, PageRouteDefines } from "../../defines/pageDefines";
+import { useCurrencyStore, } from "../../store/currencyContextStore";
 import { usePathname, useRouter } from "next/navigation";
 
 const Title = () => {
@@ -12,7 +12,8 @@ const Title = () => {
     const [pageName, setpageName] = useState<PageNameDefines>(
         PageNameDefines.rateTable
     );
-    console.log(childrenRouteName);
+    const { currencyRateData } = useCurrencyStore()
+
     const pageNameHandler = () => {
         if (childrenRouteName == PageRouteDefines.rateConversion) {
             setpageName(PageNameDefines.rateConversion);
@@ -38,19 +39,18 @@ const Title = () => {
     useEffect(() => {
         pageNameHandler();
     }, [childrenRouteName]);
-
-    return (
-        <div className={styled.titleContainer}>
-            <div className={styled.titleTxt}>{pageName}</div>
-            {childrenRouteName != PageRouteDefines.rateTable && (
-                <AiOutlineClose
-                    onClick={ClosePageHandler}
-                    size={30}
-                    className={styled.closeBtn}
-                />
-            )}
-        </div>
-    );
+        return (
+            <div className={styled.titleContainer}>
+                <div className={styled.titleTxt}>{pageName}</div>
+                {childrenRouteName != PageRouteDefines.rateTable && (
+                    <AiOutlineClose
+                        onClick={ClosePageHandler}
+                        size={30}
+                        className={styled.closeBtn}
+                    />
+                )}
+            </div>
+        );
 };
 
 export default Title;

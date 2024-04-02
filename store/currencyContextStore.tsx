@@ -3,7 +3,7 @@ import {
     CurrencySelectDefines,
     targetSelectCurrencyDefaultValue,
     tranSelectCurrencyDefaultValue,
-} from "@/Defines/currencyDefines";
+} from "@/defines/currencyDefines";
 import React, { createContext, useContext, useState } from "react";
 // import { PageDefines } from "../defines/pageDefines";
 
