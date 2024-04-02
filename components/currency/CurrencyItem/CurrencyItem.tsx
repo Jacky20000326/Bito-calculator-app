@@ -19,6 +19,7 @@ const CurrencyItem = () => {
                             <Image src={item.currency_icon}
                                 width={500}
                                 height={500}
+                                priority = {true}
                                 alt={item.currency}/>
                         </div>
                         <div className={styled.currencyName}>{item.currency} / TWD</div>

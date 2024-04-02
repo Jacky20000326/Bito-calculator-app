@@ -48,6 +48,7 @@ const SelectCurrencyItem = () => {
                         alt={item.currency}
                         width={60}
                         height={60}
+                        priority = {true}
                     />
                     <div className={styled.currencyName}>{item.currency}</div>
                 </div>
