@@ -99,8 +99,8 @@ const Conversion = () => {
                             className={styled.currencyIcon}
                             src={targetSelectCurrency?.currency_icon as string}
                             alt="currency icon"
-                            width={30}
-                            height={30}
+                            width={50}
+                            height={50}
                         />
                         <div className={styled.currencyName}>
                             {targetSelectCurrency?.currency}/ TWD
@@ -122,8 +122,8 @@ const Conversion = () => {
                             className={styled.currencyIcon}
                             src={tranSelectCurrency?.currency_icon as string}
                             alt="currency icon"
-                            width={30}
-                            height={30}
+                            width={50}
+                            height={50}
                         />
                         <div className={styled.currencyName}>
                             {tranSelectCurrency?.currency} / TWD
