@@ -99,7 +99,7 @@ const Conversion = () => {
                             className={styled.currencyIcon}
                             src={targetSelectCurrency?.currency_icon as string}
                             alt="currency icon"
-                            width={10}
+                            width={30}
                             height={30}
                         />
                         <div className={styled.currencyName}>
@@ -122,7 +122,7 @@ const Conversion = () => {
                             className={styled.currencyIcon}
                             src={tranSelectCurrency?.currency_icon as string}
                             alt="currency icon"
-                            width={10}
+                            width={30}
                             height={30}
                         />
                         <div className={styled.currencyName}>
