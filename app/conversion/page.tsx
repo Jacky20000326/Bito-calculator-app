@@ -47,7 +47,6 @@ const Conversion = () => {
     // set the target currency select
     const setTargetSelectHandler = () => {
         setChooseCurrencySelect(CurrencySelectDefines.target);
-        // setCurrPage(PageRouteDefines.currencySelect);
         router.push(PageRouteDefines.currencySelect);
     };
 
