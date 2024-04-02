@@ -1,6 +1,6 @@
 ## 專案連接
 
-### [連接](https://bito-calculator-app-k8rk.vercel.app/conversion)
+### [連接](https://bito-calculator-app-k8rk.vercel.app/)
 
 ## 專案截圖
 
