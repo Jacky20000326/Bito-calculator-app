@@ -8,6 +8,7 @@ const CurrencyItem = () => {
     const { data } = useQuery({
         queryKey: ["currency"],
         queryFn: fetchCurrencyData,
+        refetchOnWindowFocus: false,
     });
 
     const [currencyData, setCurrencyData] = useState(data);

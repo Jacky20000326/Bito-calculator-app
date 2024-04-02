@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 const Title = () => {
     const childrenRouteName = usePathname();
-    const Route = useRouter();
+    const route = useRouter();
     const [pageName, setpageName] = useState<PageNameDefines>(
         PageNameDefines.rateTable
     );
@@ -26,11 +26,11 @@ const Title = () => {
 
     const ClosePageHandler = () => {
         if (childrenRouteName === PageRouteDefines.rateConversion) {
-            Route.push(PageRouteDefines.rateTable);
+            route.push(PageRouteDefines.rateTable);
         }
 
         if (childrenRouteName === PageRouteDefines.currencySelect) {
-            Route.push(PageRouteDefines.rateConversion);
+            route.push(PageRouteDefines.rateConversion);
         }
     };
 

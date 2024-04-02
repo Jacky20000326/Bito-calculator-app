@@ -6,10 +6,10 @@ import { PageRouteDefines } from "../defines/pageDefines";
 import CurrencyItem from "@/components/currency/CurrencyItem/CurrencyItem";
 import HydratedPosts from "@/libs/react-query-lib/HydrateProvider";
 const Home = () => {
-    const Route = useRouter();
+    const route = useRouter();
 
     const movePageHandler = () => {
-        Route.push(PageRouteDefines.rateConversion);
+        route.push(PageRouteDefines.rateConversion);
     };
 
     return (

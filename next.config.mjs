@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ["cloudflare-ipfs.com"]
+        domains: ["cloudflare-ipfs.com"],
+        minimumCacheTTL: 60,
     }
 };
 
