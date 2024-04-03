@@ -5,6 +5,7 @@ import "../styles/global.sass";
 import { CurrencyContext } from "../store/currencyContextStore";
 import { QueryProvider } from "../libs/react-query-lib/QueryProvider";
 import Title from "../components/common/Title";
+import HydratedPosts from "@/libs/react-query-lib/HydrateProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,7 +23,9 @@ export default function RootLayout({
             <body className={inter.className}>
                 <QueryProvider>
                     <Title />
-                    <CurrencyContext>{children}</CurrencyContext>
+                    <HydratedPosts>
+                        <CurrencyContext>{children}</CurrencyContext>
+                    </HydratedPosts>
                 </QueryProvider>
             </body>
         </html>

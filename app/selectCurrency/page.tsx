@@ -22,9 +22,7 @@ const SelectCurrencyCategory = () => {
 
     return (
         <div className={styled.selectCurrencyCategoryContainer}>
-            <HydratedPosts>
                 <SelectCurrencyItem/>
-            </HydratedPosts>
         </div>
     );
 };

@@ -15,6 +15,7 @@ const SelectCurrencyItem = () => {
         queryKey: ["currency"],
         queryFn: fetchCurrencyData,
         refetchOnWindowFocus: false,
+        staleTime: Infinity,
     });
     const [selectDataList, setSelectDataList] = useState(data);
     const {

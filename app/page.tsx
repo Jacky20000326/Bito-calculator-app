@@ -20,9 +20,7 @@ const Home = () => {
             </div>
 
             <div className={styled.rateColumnContainer}>
-                <HydratedPosts>
                     <CurrencyItem />
-                </HydratedPosts>
             </div>
             <div className={styled.rateConversionBtn} onClick={movePageHandler}>
                 Rate ConversionBtn
