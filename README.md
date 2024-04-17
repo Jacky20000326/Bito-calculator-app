@@ -25,38 +25,40 @@ npm run dev
 ## 專案架構
 
 ```
-├── apis
-│   └── currencyApi.ts             // 提供currency api接口,並建立fetch request提供¸提供串接使用
-├── app
-│   ├── layout                     // 專案內全局的佈局
-│   ├── page                       // 專案入口
-├── components                  
-│   └── common                     // 專案共享組建
-│      ├── Loading                 // 載入組建
-│      ├── Title                   // 標頭組建
-│   └── currency                   // currency相關頁面元件
-│      ├── CurrencyItem            // currency list 列表元件
-│      ├── SelectCurrenctItem      // current select 列表元件
-├── defines
-│   ├── currencyApiType.d.ts       // currency api 型別定義檔案
-│   └── currencyDefines.ts         // currency相關初始配置及ENUM放置處
-│   └── pageDefines.ts             // 頁面名稱配置
-├── libs                           // libery 配置資料夾
-│   └── react-query-lib            // react-query libery 相關函式使用
-│      ├── GetQueryClient.ts       // 建立new QueryClient實體且為singal(無使用)
-│      ├── HydrateProvider.ts      // 建立dehydrate Provider提供使用ssr資料元件使用
-│      ├── QueryProvider.ts        // 建立初始new QueryClient Provider
-├── styles                        
-│   ├── global.sass                // 全局樣式配置
-└── utils                          // 可複用函數
-│   ├── rateExchange.ts            // currency匯率轉換函式   
-│   ├── thousandsSeparator.ts      // 千分位切割及精度位數換算函式
-└── store                          // context api資料存儲位置
-│   ├──currencyContextStore.ts     // currency provider 資料存儲管理
-
+app                                  // 专案程式码放置资料夹
+  ├── _component                     
+  │   └── Matching                   // 配牌相关组件
+  │      └── mahjomg                 // 麻将相关组件
+  │         ├── BoardSquare.tsx      // 玩家跟牌池放置外诓
+  │         ├── DrapPicture.tsx      // 麻将组件及相关操作逻辑
+  │         ├── MahJong.tsx          // 麻将配牌页入口
+  │      └── porker                  // 扑克相关组件
+  │         ├── Porker.tsx           // 扑克相关页面逻辑(尚未制作)
+  │   └── utility                    // 共用组件
+  │      ├── Header.tsx              // Header 
+  ├── _lib                           // 可复用元件
+  │   └── card                       // 牌类
+  │       └── mahJong                // 麻将相关
+  │          ├── Card.tsx            // 麻将资料
+  │          ├── paiCard.tsx         // 配牌逻辑
+  │          ├── ReadPaiCard.tsx     // 读取配牌格式逻辑 
+  │   └── dnd                       // 專案入口
+  │      ├── Card.tsx               // react dnd type definded
+  ├── components                  
+  │   └── common                     // 專案共享組建
+  │      ├── Loading                 // 載入組建
+  │      ├── Title                   // 標頭組建
+  │   └── currency                   // currency相關頁面元件
+  │      ├── CurrencyItem            // currency list 列表元件
+  │      ├── SelectCurrenctItem      // current select 列表元件
+  ├── matching
+  │   ├── page.tsx                   // 配牌路由
+  ├── store                          // 资料管理(ZUSTAND)
+  │   ├── mahJongStore.ts            // 建立麻将资料(ZUSTAND)
+  ├── layout.tsx                     // Next layout
+  ├── page.tsx                       // default home page (/)
 ```
 
-## 技術點
-
-1. 使用context api 進行資料管理避免產生prop drilling問題提升了官案的可讀性。
-2. 使用Server-Side-Render 方式來獲取資料頁面,並搭配prefetchQuery及hydrate渲染至client。
+## 技術
+1. 使用Zustand 三方资料馆里库避免props drilling
+2. 使用 React dnd 实做拖曳
